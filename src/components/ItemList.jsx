@@ -10,19 +10,23 @@ export default function ItemsList({
       <div />
     );
   }
+  // create a list of people to be selected from the added people list for the dropdown list
   const peopleListJSX = peopleList.map((person) => (
     <option key={person.name} value={person.name}>{person.name}</option>
   ));
+  // functional component for selected a name
   function NameSelector({ itemIndex }) {
     const [selectedName, setSelectedName] = useState('select');
-
+    // handle when a person is selected
     const handleSelectedNameChange = (e) => {
       setSelectedName(e.target.value);
     };
+    // when user clicks on add [erson ]
     const onSubmit = () => {
-      // update itemlist
+      // update itemlist with person name
       itemList[itemIndex].people.push(selectedName);
       sendItemList([...itemList]);
+      // finding the index of submitted person in peopleList array
       const submittedName = (person) => person.name === selectedName;
       const indexOfName = peopleList.findIndex(submittedName);
       // use the index of the name to find the amount that needs to be paid
@@ -54,6 +58,7 @@ export default function ItemsList({
       </div>
     );
   }
+  // display a list of people who is required to pay for the item
   function NameList({ item }) {
     const { people } = item;
     const peopleNamesJsx = people.map((personName) => (
@@ -73,6 +78,7 @@ export default function ItemsList({
       </div>
     );
   }
+  // array for item element
   const itemsJsx = itemList.map((item, index) => (
     <div key={index} className="container item-container">
       <div className="row" id="item-detail">
