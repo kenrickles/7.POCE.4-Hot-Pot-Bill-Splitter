@@ -20,6 +20,7 @@ export default function Form({
   };
   const handlePersonSubmit = () => {
     sendPeopleList([person, ...peopleList]);
+    setPerson({ name: '', amount: 0 });
   };
   // handle item name & price change
   const handleItemNameChange = (e) => {
@@ -32,6 +33,7 @@ export default function Form({
   };
   const handleItemSubmit = () => {
     sendItemList([item, ...itemList]);
+    setItem({ name: '', price: '', people: [] });
   };
 
   return (
@@ -42,7 +44,7 @@ export default function Form({
       </label>
       <label htmlFor="item-price">
         {'item price: '}
-        <input id="item-price" type="number" step="0.01" value={item.price} onChange={handleItemPriceChange} />
+        <input id="item-price" type="number" step="1.00" value={item.price} onChange={handleItemPriceChange} />
       </label>
       <button type="button" onClick={handleItemSubmit}> add item </button>
       <br />

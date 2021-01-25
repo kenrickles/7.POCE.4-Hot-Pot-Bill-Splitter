@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 export default function ItemsList({
   billId, itemList, sendItemList, peopleList, sendPeopleList,
 }) {
+  // using billId to decide display or no display
   if (billId === null) {
     return (
       <div />
